@@ -1,12 +1,12 @@
   {
-    question: "",
-    answer: "",
-    image: "images/.PNG"
+    question: "Как изменяется сила резания при увеличении переднего угла?",
+    answer: "уменьшается",
+    image: "images/s.PNG"
   },
   {
-    question: "",
-    answer: "",
-    image: "images/.PNG"
+    question: "Какой фактор следует учитывать при выборе подачи при чистом точении?",
+    answer: "требуемую точность обработки и шероховатость поверхности",
+    image: "images/s.PNG"
   },
   {
     question: "",
