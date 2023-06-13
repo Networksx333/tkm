@@ -5,49 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
 
+
+
+/* CSS файл для стилизации программы-тестирования */
+
+/* Общие стили */
 body {
-  font-size: 18px;
+  background-color: #f9f9f9;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  padding: 20px;
 }
 
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Стили для контейнера вопроса */
 #questionContainer {
-  text-align: center;
-  margin: 50px auto;
-  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fade-in 0.5s ease;
+  animation-fill-mode: forwards;
 }
 
+/* Стили для изображения вопроса */
 #questionImage {
   max-width: 100%;
-  height: auto;
+  border-radius: 10px;
   margin-bottom: 20px;
-  animation: zoomIn 1s ease-in-out;
+  animation: slide-in 0.5s ease;
+  animation-fill-mode: forwards;
 }
 
+/* Стили для поля ввода ответа */
 #answerInput {
-  font-size: 18px;
   padding: 10px;
-  width: 200px;
   margin-bottom: 20px;
-  animation: slideIn 1s ease-in-out;
+  width: 100%; /* Изменено на 100% ширины */
+  max-width: 300px; /* Добавлено максимальное значение ширины */
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
+/* Стили для кнопки "Проверить" */
 #checkButton {
-  font-size: 18px;
   padding: 10px 20px;
+  font-size: 1.2rem;
   background-color: #4CAF50;
-  color: white;
+  color: #fff;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
-  animation: fadeIn 1s ease-in-out;
 }
 
+/* Стили для результата */
 #result {
   text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
   margin-top: 20px;
-  font-size: 24px;
-  animation: slideIn 1s ease-in-out;
+  animation: fade-in 0.5s ease;
+  animation-fill-mode: forwards;
 }
 
-@keyframes fadeIn {
+/* Анимации */
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -56,24 +88,49 @@ body {
   }
 }
 
-@keyframes zoomIn {
+@keyframes slide-in {
   0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
+    transform: translateX(-20px);
   }
   100% {
     transform: translateX(0);
   }
 }
 
+/* Медиазапросы для адаптивности */
+
+/* Для устройств с шириной до 600px */
+@media screen and (max-width: 600px) {
+  #questionContainer {
+    padding: 10px;
+  }
+  
+  #answerInput {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Для устройств с шириной от 601px до 900px */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  #questionContainer {
+    max-width: 400px;
+  }
+}
+
+/* Для устройств с шириной от 901px до 1200px */
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+  #questionContainer {
+    max-width: 600px;
+  }
+}
+
+/* Для устройств с шириной от 1201px */
+@media screen and (min-width: 1201px) {
+  #questionContainer {
+    max-width: 800px;
+  }
+}
 
 
 
