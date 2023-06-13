@@ -9,9 +9,9 @@
     image: "images/s.PNG"
   },
   {
-    question: "",
-    answer: "",
-    image: "images/.PNG"
+    question: "Напишите в указанном порядке обозначения: плоскости резания, движения подачи, главной секущей плоскости, глубины резания, главного угла в плане.",
+    answer: "Pn, Ds, Pt, t, фи",
+    image: "images/pndspttphi.PNG"
   },
   {
     question: "",
