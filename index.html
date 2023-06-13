@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Тестирование</title>
+  <style>
+
+
+
+/* CSS файл для стилизации программы-тестирования */
+
+/* Общие стили */
+body {
+  background-color: #f9f9f9;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Стили для контейнера вопроса */
+#questionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fade-in 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+/* Стили для изображения вопроса */
+#questionImage {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  animation: slide-in 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+/* Стили для поля ввода ответа */
+#answerInput {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 300px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Стили для кнопки "Проверить" */
+#checkButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Стили для результата */
+#result {
+  color: white;
+  align-self: center;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: fade-in 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+/* Анимации */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <div id="questionContainer">
+    <h2 id="question"></h2>
+    <img id="questionImage" src="" alt="Question Image">
+    <input id="answerInput" type="text" placeholder="Введите ваш ответ">
+    <button id="checkButton">Проверить</button>
+  </div>
+  <div id="result"></div>
+
+  <script>
+var questions = [
+  {
+    question: "Напишите название указанной на рисунке поверхности заготовки.",
+    answer: "Обрабатываемая поверхность",
+    image: "images/obrabat_pov.PNG"
+  },
+  {
+    question: "Обозначьте цифрой тот элемент резца, который отмечен на рисунке цифрой '1'",
+    answer: "Главная режущая кромка",
+    image: "images/glav_reg_krom.PNG"
+  },
+  {
+    question: "Как называется сила резания Px?",
+    answer: "Сила подачи",
+    image: "images/sil_pod.PNG"
+  },
+  {
+    question: "Какая это обработка?",
+    answer: "Растачивание внутреннего цилиндрического отверстия проходным расточным резцом",
+    image: "images/rast_vnutr_proh_otv.PNG"
+  },
+  {
+    question: "Как изменяется главный задний угол резца при его установке ниже центра",
+    answer: "увеличивается",
+    image: "images/s.PNG"
+  },
+  {
+    question: "К какой группе инструментчьных материалов относится материал 9ХС?",
+    answer: "Легированная инструментальная",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой метод обработки и применяемый инструмент изображен",
+    answer: "Сверление отверстия сверлом",
+    image: "images/sverl.PNG"
+  },
+  {
+    question: "Какой инструмент изображен на схеме и для каких целей",
+    answer: "Цилиндрическая фреза для фрезерования плоских поверхностей",
+    image: "images/cilinder_frez.PNG"
+  },
+  {
+    question: "Что это",
+    answer: "Шевер",
+    image: "images/shever.PNG"
+  },
+  {
+    question: "Какой это метод обработки",
+    answer: "Вихревая обработка наружной резьбы по схеме внутреннего касания",
+    image: "images/vihrevaya_narugn.PNG"
+  },
+  {
+    question: "Как называется указанная поверхность",
+    answer: "Поверхность резания",
+    image: "images/rezania.PNG"
+  },
+  {
+    question: "Это что?",
+    answer: "Фрезерование плоской поверхности торцевой фрезой",
+    image: "images/plosk_torz.PNG"
+  },
+  {
+    question: "Что здесь изображено?",
+    answer: "Рассверливание отверстия спиральным сверлом",
+    image: "images/rassverl.PNG"
+  },
+  {
+    question: "Что на первом рисунке?",
+    answer: "Нарезание венца зубчатого колеса пальцевой фрезой",
+    image: "images/disk_modul_frez.PNG"
+  },
+  {
+    question: "Что на втором рисунке?",
+    answer: "Нарезание венца зубчатого колеса дисковой фрезой",
+    image: "images/disk_modul_frez.PNG"
+  },
+  {
+    question: "Что на третьем рисунке?",
+    answer: "Нарезание венца зубчатого колеса долбяком",
+    image: "images/disk_modul_frez.PNG"
+  },
+  {
+    question: "Что на четвёртом рисунке?",
+    answer: "Нарезание венца зубчатого колеса долбяком",
+    image: "images/disk_modul_frez.PNG"
+  },
+  {
+    question: "Что на шестом рисунке?",
+    answer: "Нарезание венца зубчатого колеса червячной фрезой",
+    image: "images/disk_modul_frez.PNG"
+  },
+  {
+    question: "Тебе нужно получить шероховатость Rz 12.5 мкм? Каким методом будешь пользоваться?",
+    answer: "Фрезерованием",
+    image: "images/verhn_poverhn.PNG"
+  },
+  {
+    question: "Какой инструмент применяется для черновой обработки отверстий?",
+    answer: "Сверло",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой метод изображён на рисунке?",
+    answer: "Вихревая обработка внутренней резьбы",
+    image: "images/vihrev_vnutr_rezb.PNG"
+  },
+  {
+    question: "Как называется сила резания Py?",
+    answer: "Радиальная составляющая",
+    image: "images/py.PNG"
+  },
+  {
+    question: "Каким резцом происходит точение канавки?",
+    answer: "Канавочным",
+    image: "images/kanavochniy.PNG"
+  },
+  {
+    question: "Укажите тип резца",
+    answer: "Проходной упорный",
+    image: "images/proh_upor.PNG"
+  },
+  {
+    question: "Напишите инструментальный материал, в котором 6% - Co, 94% - WC",
+    answer: "ВК6",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Назовите метод обработки и инструмент",
+    answer: "Фрезерование вертикальной поверхности концевой фрезой",
+    image: "images/frez_torz_pov_konz_frez.PNG"
+  },
+  {
+    question: "Какой инструмент изображён на схеме и для каких целей?",
+    answer: "Развёртка, развёртывание отверстия",
+    image: "images/razvertka.PNG"
+  },
+  {
+    question: "Какой технологичный метод обработки резанием Вы примените для получения поверхности, указанной на заготовке затемнением с шероховатостью Rz 0,32 мкм?",
+    answer: "Шлифование",
+    image: "images/shlifov_pov.PNG"
+  },
+  {
+    question: "Каково назначение хонингования?",
+    answer: "Чистовая отделочная обработка отверстий",
+    image: "images/.PNG"
+  },
+  {
+    question: "Какой вид стружки наиболее благоприятен для протекания процесса резания?",
+    answer: "Суставчатая",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой вид стружки наиболее не благоприятен для протекания процесса резания?",
+    answer: "Сливная",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Как изменяется сила резания при уменьшении переднего угла?",
+    answer: "Увеличивается",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Что здесь изображено?",
+    answer: "Точение наружной цилиндрической поверхности проходным резцом",
+    image: "images/tochenie_naruznoi_poverhn.PNG"
+  },
+  {
+    question: "Что изображено на картинке?",
+    answer: "Точение наружной цилиндрической поверхности проходным упорным резцом?",
+    image: "images/proh_uporn_rez.PNG"
+  },
+  {
+    question: "Что изображено на картинке?",
+    answer: "Точение наружной цилиндрической поверхности проходным отогнутым резцом",
+    image: "images/proh_otogn_rez.PNG"
+  },
+  {
+    question: "Назовите инструмент и метод обработки",
+    answer: "Подрезной прямой резец, подрезание торца",
+    image: "images/podrez_pryam.PNG"
+  },
+  {
+    question: "Назовите инструмент и метод обработки",
+    answer: "Проходной отогнутый резец, подрезание торца",
+    image: "images/proh_otogn_torz.PNG"
+  },
+  {
+    question: "В каком из указанных инструментальный материалов содержится 12% - Со, 7% - TiC+TaC, 81% - WC?",
+    answer: "ТТ7К12",
+    image: "images/.PNG"
+  },
+  {
+    question: "Какой метод обработки и применяемый инструмент изображен на схеме",
+    answer: "Фрезерование наклонной поверхности концевой фрезой, концевая фреза",
+    image: "images/nakl_pov_konz_frez.PNG"
+  },
+  {
+    question: "Какой инструмент изображен на схеме и для каких целей",
+    answer: "Ружейное сверло, необходимо для сверления отверстий глубиной более 5 диаметров",
+    image: "images/ruz_sverlo.PNG"
+  },
+  {
+    question: "Какой фактор следует учитывает при выборе подачи при черновом точении?",
+    answer: "Прочность режущего инструмента",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Что изображено на 8 картинке?",
+    answer: "Нарезание резьбы плашкой",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 4 картинке?",
+    answer: "Точение фасонным резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 1 картинке?",
+    answer: "Точение наружной цилиндрической поверхности проходным отогнутым резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 2 картинке?",
+    answer: "Подрезание торца проходным отогнутым резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 3 картинке?",
+    answer: "Точение конической поверхности",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 5 картинке?",
+    answer: "Точение фасонной поверхности проходным отогнутым резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 6 картинке?",
+    answer: "Отрезание отрезным резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 7 картинке?",
+    answer: "Нарезание наружной резьбы резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Что изображено на 5 картинке?",
+    answer: "Создание фасонной поверхности резцом",
+    image: "images/mnogo_kartinok.PNG"
+  },
+  {
+    question: "Назови все плоскости и углы токарного резца, не смотря на картинку.",
+    answer: "Отлично",
+    image: "images/ugli_rezca.PNG"
+  },
+  {
+    question: "Как изменяется главный задний угол резца при его установке ниже центра",
+    answer: "Увеличивается",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой метод обработки и применяемый инструмент изображен на схеме",
+    answer: "Фрезерование фасонной поверхности фасонной дисковой фрезой",
+    image: "images/fas_disk_frez.PNG"
+  },
+  {
+    question: "Какой инструмент изображен на схеме и для каких целей",
+    answer: "Сверло одностороннего действия (резания) для сверления глубоких отверстий",
+    image: "images/glub_sverlo.PNG"
+  },
+  {
+    question: "Почему развертывание обеспечивает более низкую шероховатость поверхности отверстий, чем сверление",
+    answer: "Из-за малого объёма образующейся стружки и большого количества калибрующих кромок",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Назовите тип станка",
+    answer: "Плоскошлифовальный",
+    image: "images/plosko_shlif.PNG"
+  },
+  {
+    question: "Что понимается под твёрдостью шлифовального круга?",
+    answer: "Прочность закрепления зёрен",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Почему при обработке отверстий спиральными сверлами сложно обеспечить высокую точность отверстий?",
+    answer: "из-за низкой жёсткости инструмента",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой метод обработки и применяемый инструмент изображен на схеме",
+    answer: "Фрезерование уступа пальцевой фрезой",
+    image: "images/ustup_palz.PNG"
+  },
+  {
+    question: "Какое влияние на протекание процесса резания и его результаты оказывает образование нароста на лезвии инструментов?",
+    answer: "Защищает лезвие от износа, но ухудшает качество обработанной поверхности и приводит к возникновению вибраций при обработке резанием",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой инструмент изображен на схеме и для каких целей",
+    answer: "Кольцевое сверло для сверления глубоких отверстий большого диаметра",
+    image: "images/kolcevoe_sverlo.PNG"
+  },
+  {
+    question: "Как называется инструмент для обработки зубчатых колес фрезерованием методом обкатки",
+    answer: "червячная модульная фреза",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой характер имеет главное движение резания при протягивании",
+    answer: "поступательное движение",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Как изменяется шероховатость при увеличении переднего угла",
+    answer: "Уменьшается",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Куда передается наибольшая часть тепловой энергии, выделяющейся при резании",
+    answer: "В стружку",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Какой метод обработки и применяемый инструмент изображен на схеме",
+    answer: "Фрезерование закрытого шпоночного паза шпоночной фрезой",
+    image: "images/shpon_paz_zacr.PNG"
+  },
+  {
+    question: "Какой метод обработки и применяемый инструмент изображен на схеме",
+    answer: "Цекование отверстия цековкой",
+    image: "images/cekovka.PNG"
+  },
+  {
+    question: "Какими способами можно обработать зубчатое колесо с внутренними зубьями",
+    answer: "Долблением, протягиванием",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Сколько режущих кромок у сверла?",
+    answer: "5",
+    image: "images/s.PNG"
+  }
+];
+
+var questionIndex = 0;
+var question = document.getElementById("question");
+var questionContainer = document.getElementById("questionContainer");
+var questionImage = document.getElementById("questionImage");
+var answerInput = document.getElementById("answerInput");
+var checkButton = document.getElementById("checkButton");
+var result = document.getElementById("result");
+var currentQuestion = "";
+
+function showQuestion() {
+  currentQuestion = getRandomQuestion();
+  questionContainer.style.opacity = "0";
+  questionContainer.style.transform = "rotateY(90deg) scale(0.8)";
+  questionImage.src = currentQuestion.image;
+  question.textContent = currentQuestion.question;
+  answerInput.value = "";
+  result.textContent = "";
+
+  questionContainer.style.animation = "fade-in 0.5s ease, slide-in 0.5s ease";
+  questionContainer.style.animationFillMode = "forwards";
+
+  setTimeout(function() {
+    questionContainer.style.opacity = "1";
+    questionContainer.style.transform = "rotateY(0) scale(1)";
+  }, 500);
+}
+
+function getRandomQuestion() {
+  var randomIndex = Math.floor(Math.random() * questions.length);
+  return questions[randomIndex];
+}
+
+function checkAnswer() {
+  // var currentQuestion = currentQuestion();
+  // console.log(currentQuestion);
+  var userAnswer = answerInput.value.trim();
+  var color = userAnswer.toLowerCase() === currentQuestion.answer.toLowerCase() ? "#9966FF" : "#9966FF";
+  
+  document.body.style.transition = "background 1s";
+  document.body.style.background = color;
+  result.textContent = "Правильный ответ: " + currentQuestion.answer;
+
+  // questionIndex = Math.floor(Math.random() * questions.length); // Случайный выбор следующего вопроса
+  setTimeout(function() {
+    showQuestion();
+    document.body.style.background = "#f9f9f9"; // Возвращаем исходный фон через 5 секунд
+  }, 5000);
+}
+
+
+
+checkButton.addEventListener("click", checkAnswer);
+
+showQuestion(); // Начало тестирования, показываем первый вопрос
+
+  </script>
+</body>
+</html>
