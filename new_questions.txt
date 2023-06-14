@@ -1,5 +1,145 @@
   {
     question: "Как изменится шероховатость при увеличении вспомогательного угла в плане?",
+    answer: "увеличится",
+    image: "images/s.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание горизонтальной поверхности на поперечно-строгальном станке",
+    image: "images/goriz_pov_poper_strog.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание вертикальной поверхности на поперечно-строгальном станке",
+    image: "images/vertic_pov_poper_strog_stan.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание наклонной поверхности на поперечно-строгальном станке",
+    image: "images/nakl_pov_poper_strog.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание рифлений на поперечно-строгальном станке",
+    image: "images/strog_rifl_poper_strog_stan.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание вертикальной и горизонтальной поверхностей на продольно-строгальном станке",
+    image: "images/poeper_vertic_strog.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание призматического паза на продольно-строгальном станке",
+    image: "images/prizmat_paza_na_prodol_strog_rez.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Строгание фасонной поверхности по копиру на продольно-строгальном станке",
+    image: "images/strog_fas_pov_po_copiru.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Долбление вертикальной поверхности на долбежном станке",
+    image: "images/dolbl_vertic_pov.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Долбление цилиндрической поверхности на долбёжном станке",
+    image: "images/dolbl_cil_pov.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Долбление шпоночного паза на долбёжном станке",
+    image: "images/dolbl_shpon_paza.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Растачивание внутренней ступенчатой поверхности упорным расточным резцом",
+    image: "images/stupenchatoi.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Растачивание внутренней канавки канавочным расточным резцом",
+    image: "images/kanavochniy_rasochnii.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Получение центрового отверстия центровочным сверлом",
+    image: "images/centrovochniy.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Растачивание внутренней фасонной поверхности фасонным расточным резцом",
+    image: "images/fason_pov_rast.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "Цекование (развёртка??) фасонным зенкером",
+    image: "images/cekovka_fason.PNG"
+  },
+    {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+    {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+    {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+    {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "Что изображено на схеме?",
+    answer: "",
+    image: "images/.PNG"
+  },
+  {
+    question: "",
     answer: "",
     image: "images/.PNG"
   },
