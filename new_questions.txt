@@ -59,9 +59,9 @@
     image: "images/.PNG"
   },
   {
-    question: "",
-    answer: "",
-    image: "images/.PNG"
+    question: "Что под номером 2?",
+    answer: "Режущее лезвие резца",
+    image: "images/rezhushee_lezvie.PNG"
   },
   {
     question: "",
